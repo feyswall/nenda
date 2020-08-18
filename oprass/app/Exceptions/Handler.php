@@ -50,6 +50,36 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        $class = get_class($exception);
+
+        switch($class) {
+            case 'Illuminate\Auth\AuthenticationException':
+                $guard = arr::only($exception->guards(), 0);
+                switch ($guard[0]) {
+                    case 'admin':
+                        $login = 'admin.login';
+                        break;
+                    case 'lecture':
+                        $login = 'lecture.login';
+                        break;
+                    case 'tutorial-assistance':
+                        $login = '';
+                        break;
+                    case 'assistance-lecture':
+                        $login = 'assistance-lecture.login';
+                        break;
+                    case 'supervisor':
+                        $login = '';
+                        break;
+                    default:
+                        $login = 'login';
+                        break;
+                }
+
+                return redirect()->route($login);
+        }
+
+
         return parent::render($request, $exception);
     }
 }

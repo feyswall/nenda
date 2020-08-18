@@ -46,6 +46,59 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+            'hash' => false,
+        ],
+        'lecture' => [
+            'driver' => 'session',
+            'provider' => 'lectures',
+        ],
+
+        'lecture-api' => [
+            'driver' => 'token',
+            'provider' => 'lectures',
+            'hash' => false,
+        ],
+        'tutorial-assistance' => [
+            'driver' => 'session',
+            'provider' => 'tutorial-assistances',
+        ],
+
+        'tutorial-assistance-api' => [
+            'driver' => 'token',
+            'provider' => 'tutorial-assistances',
+            'hash' => false,
+        ],
+        'assistance-lecture' => [
+            'driver' => 'session',
+            'provider' => 'assistance-lectures',
+        ],
+
+
+        'assistance-lecture-api' => [
+            'driver' => 'token',
+            'provider' => 'assistance-lectures',
+            'hash' => false,
+        ],
+        'supervisor' => [
+            'driver' => 'session',
+            'provider' => 'supervisors',
+        ],
+
+
+        'supervisor-api' => [
+            'driver' => 'token',
+            'provider' => 'supervisors',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -69,6 +122,26 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+        'lectures' => [
+            'driver' => 'eloquent',
+            'model' => App\Lecture::class,
+        ],
+        'tutorial-assistances' => [
+            'driver' => 'eloquent',
+            'model' => App\TutAssistance::class,
+        ],
+        'assistance-lectures' => [
+            'driver' => 'eloquent',
+            'model' => App\LectAssistance::class,
+        ],
+        'supervisors' => [
+            'driver' => 'eloquent',
+            'model' => App\Supervisor::class,
         ],
 
         // 'users' => [
@@ -96,7 +169,37 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
-            'expire' => 60,
+            'expire' => 300,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 300,
+            'throttle' => 60,
+        ],
+        'lectures' => [
+            'provider' => 'lectures',
+            'table' => 'password_resets',
+            'expire' => 300,
+            'throttle' => 60,
+        ],
+        'tutorial-assistances' => [
+            'provider' => 'tutorial-assistances',
+            'table' => 'password_resets',
+            'expire' => 300,
+            'throttle' => 60,
+        ],
+        'assistance-lectures' => [
+            'provider' => 'assistance-lectures',
+            'table' => 'password_resets',
+            'expire' => 300,
+            'throttle' => 60,
+        ],
+        'supervisors' => [
+            'provider' => 'supervisors',
+            'table' => 'password_resets',
+            'expire' => 300,
             'throttle' => 60,
         ],
     ],
